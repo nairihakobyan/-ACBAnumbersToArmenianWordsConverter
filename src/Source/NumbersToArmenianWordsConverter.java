@@ -86,7 +86,7 @@ private static final String[] tensNames = {
 		int thousands = Integer.parseInt(snumber.substring(9, 12));
 		// nnn_nnn_nnn_XXX_nnn
 		int hundreds = Integer.parseInt(snumber.substring(12, 15)); 
-
+		// nnn_nnn_nnn_nnn_XXX
 		
 
 		String Trilions;
