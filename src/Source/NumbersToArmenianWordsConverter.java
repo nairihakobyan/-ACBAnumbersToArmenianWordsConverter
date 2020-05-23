@@ -10,10 +10,11 @@ private static final String[] tensNames = {
 	private static final String[] numNames = { "", " մեկ", " երկու", " երեք", " չորս", " հինգ", " վեց", " յոթ", " ութ",
 			" ինը", " տաս", " տասնմեկ", " տասներկու", " տասներեք", " տասնչորս", " տասնհինգ", " տասնվեց", " տասնյոթ",
 			" տասնութ", " տասնինը" };
-
+	private static String lumaResult;
+	
 	private NumbersToArmenianWordsConverter() {
 	}
-	private static String lumaResult;
+	
 	
 	private static String convertLessThanOneThousand(int number) {
 		String words;
@@ -35,33 +36,36 @@ private static final String[] tensNames = {
 	
 	 private static String lumaValueInWords(Double given) {
  		 String words="";
- 		 long value = new Double(given).longValue();
- 		 float tmp ;
- 		 int number = (int) ( (tmp = (float)(given-value))*100);
- 		if (number == 0)
- 		{
+ 		 long value = new Double(given).longValue(); 
+ 		 //float cast is to not let the number be rounded
+ 		 int number = (int) ( ( (float)(given-value))*100);
+ 		
+ 		 if (number == 0){
 			return words = "զրո";
-		
- 		 }
+ 		 	}
  		 while (number > 0) {
- 		 
- 		if (number % 100 < 20) {
- 			words += numNames[number % 100];
- 			number = 0;
- 		}
- 		else {	
- 			words = tensNames[number / 10] + words;
- 			number %= 10;
- 			}
-		}
- 		return numNames[number] +  words ;
+ 			 if (number % 100 < 20) {
+ 				 words += numNames[number % 100];
+ 				 number = 0;
+ 				 }
+ 			 else {	
+ 				 words = tensNames[number / 10] + words;
+ 				 number %= 10;
+ 			 	 }
+ 			 }
+ 		 return numNames[number] +  words ;
 	 }
 
 	public static String convert(Double given)  {
+		String result;
 		long value =  new Double(given).longValue();
 		// 0 to 999 999 999 999 999
-		if ( value == 0) {
-			return " զրո դրամ";
+		if ( value == 0 && given == 0) {
+			result = " զրո դրամ" ;
+			return result ;
+		}
+		else if(value == 0 && given > 0) {
+			return result = " զրո դրամ" + lumaValueInWords(given)+" լումա"; 
 		}
 
 		String snumber = Double.toString(value);
@@ -95,7 +99,7 @@ private static final String[] tensNames = {
 		default:
 			Trilions = convertLessThanOneThousand(trilions) + " տրիլիոն ";
 		}
-		String result = Trilions;
+		 result = Trilions;
 
 		String Billions;
 		switch (billions) {
