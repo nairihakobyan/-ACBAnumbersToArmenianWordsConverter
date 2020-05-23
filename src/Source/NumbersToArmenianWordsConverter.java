@@ -10,6 +10,7 @@ private static final String[] tensNames = {
 	private static final String[] numNames = { "", " մեկ", " երկու", " երեք", " չորս", " հինգ", " վեց", " յոթ", " ութ",
 			" ինը", " տաս", " տասնմեկ", " տասներկու", " տասներեք", " տասնչորս", " տասնհինգ", " տասնվեց", " տասնյոթ",
 			" տասնութ", " տասնինը" };
+	
 	private static String lumaResult;
 	
 	private NumbersToArmenianWordsConverter() {
@@ -34,14 +35,14 @@ private static final String[] tensNames = {
 		return numNames[number] + " հարյուր" + words;
 	}
 	
-	 private static String lumaValueInWords(Double given) {
+	private static String lumaValueInWords(Double given) {
  		 String words="";
  		 long value = new Double(given).longValue(); 
  		 //float cast is to not let the number be rounded
  		 int number = (int) ( ( (float)(given-value))*100);
  		
  		 if (number == 0){
-			return words = "զրո";
+			return  "զրո";
  		 	}
  		 while (number > 0) {
  			 if (number % 100 < 20) {
@@ -144,15 +145,8 @@ private static final String[] tensNames = {
 		Hundreds = convertLessThanOneThousand(hundreds);
 		result = result + Hundreds;
 		
-		 
 		lumaResult = lumaValueInWords(given) ;
 	
-	
-		return result +" դրամ "+lumaResult +" լումա" ;
+		return (result +" դրամ "+lumaResult +" լումա").replaceFirst(" ", "")+"\n" ;
+		}
 	}
- }
-
-	
-	
-
-	
