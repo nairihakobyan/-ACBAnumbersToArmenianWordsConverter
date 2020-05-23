@@ -150,11 +150,7 @@ private static final String[] tensNames = {
 	
 		return result +" դրամ "+lumaResult +" լումա" ;
 	}
-	
-	
- 
- 		 
- 	 }
+ }
 
 	
 	
