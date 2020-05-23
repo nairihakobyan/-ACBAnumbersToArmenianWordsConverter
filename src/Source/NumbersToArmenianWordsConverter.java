@@ -39,7 +39,11 @@ private static final String[] tensNames = {
  		 String words="";
  		 long value = new Double(given).longValue(); 
  		 //float cast is to not let the number be rounded
- 		 int number = (int) ( ( (float)(given-value))*100);
+ 		 int number = (int) ( 
+ 				 			( 
+ 						 (float)(given-value)
+ 				 			)
+ 				 *100);
  		
  		 if (number == 0){
 			return  "զրո";
@@ -66,7 +70,7 @@ private static final String[] tensNames = {
 			return result ;
 		}
 		else if(value == 0 && given > 0) {
-			return result = " զրո դրամ" + lumaValueInWords(given)+" լումա"; 
+			return result = " զրո դրամ " + lumaValueInWords(given)+" լումա"; 
 		}
 
 		String snumber = Double.toString(value);
