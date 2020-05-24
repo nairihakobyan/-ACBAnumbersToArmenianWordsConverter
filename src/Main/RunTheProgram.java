@@ -7,20 +7,21 @@ public class RunTheProgram{
 public static void main(String[] args)   {
 		
 	
-		Scanner scan = new Scanner(System.in);
+		Scanner scan = new Scanner(System.in);	
+		//because of the loop it accepts two enters
 		for(int i = 0;i < 100;i++) {
+			System.out.println("Please input numbers between 0 and 1 quadrillion(not including)"+"\n"
+					+ "hit Enter twice" );
+			double number = scan.nextDouble();
 			
-		System.out.println("Please input numbers from 0 to 1 quadrillion(not including)"+"\n" );
+			if(number < 1000000000000000l && number > 0)  {
+				System.out.println( NumbersToArmenianWordsConverter.convert(number));
+			}
 		
-		double number = scan.nextDouble();
-		if(number < 1000000000000000l && number > 0)  {
-			System.out.println( NumbersToArmenianWordsConverter.convert(number));
-		}
-		
-		else {
-			throw new InputMismatchException();
+			else {
+				throw new InputMismatchException();
 			}
 		}
-		scan.close();
+		
 	}
 }

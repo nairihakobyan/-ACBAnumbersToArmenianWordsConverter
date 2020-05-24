@@ -6,14 +6,14 @@ import java.text.DecimalFormat;
 public class NumbersToArmenianWordsConverter{
 
 private static final String[] tensNames = { 
-			"", " տաս", " քսան", " երեսուն", " քառասուն"," հիսուն",
-			" վաթսուն"," յոթանասուն", " ութսուն", " իննսուն" };
+			"", " Տաս", " Քսան", " Երեսուն", " Քառասուն"," Հիսուն",
+			" Վաթսուն"," Յոթանասուն", " Ութսուն", " Իննսուն" };
 
-	private static final String[] numNames = { "", " մեկ", " երկու", " երեք", " չորս", " հինգ", " վեց", " յոթ", " ութ",
-			" ինը", " տաս", " տասնմեկ", " տասներկու", " տասներեք", " տասնչորս", " տասնհինգ", " տասնվեց", " տասնյոթ",
-			" տասնութ", " տասնինը" };
+	private static final String[] numNames = { "", " Մեկ", " Երկու", " Երեք", " Չորս", " Հինգ", " Վեց", " Յոթ", " Ութ",
+			" Ինը", " Տաս", " Տասնմեկ", " Տասներկու", " Տասներեք", " Տասնչորս", " Տասնհինգ", " Տասնվեց", " Տասնյոթ",
+			" Տասնութ", " Տասնինը" };
 	
-	private static String lumaResult = "զրո ";
+	private static String lumaResult = "Զրո ";
 	
 	private NumbersToArmenianWordsConverter() {
 	}
@@ -34,7 +34,7 @@ private static final String[] tensNames = {
 		}
 		if (number == 0)
 			return words;
-		return numNames[number] + " հարյուր" + words;
+		return numNames[number] + " Հարյուր" + words;
 	}
 	
 	private static String lumaValueInWords(Double given) {
@@ -82,11 +82,11 @@ private static final String[] tensNames = {
 		long value =  new Double(given).longValue();
 		// 0 to 999 999 999 999 999
 		if ( value == 0 && given == 0) {
-			result = " զրո դրամ" ;
+			result = " Զրո Դրամ" ;
 			return result ;
 		}
 		else if(value == 0 && given > 0) {
-			return result = " զրո դրամ " + lumaValueInWords(given)+" լումա"; 
+			return result = " Զրո Դրամ " + lumaValueInWords(given)+" Լումա"; 
 		}
 
 		String snumber = Double.toString(value);
@@ -115,10 +115,10 @@ private static final String[] tensNames = {
 			Trilions = "";
 			break;
 		case 1:
-			Trilions = convertLessThanOneThousand(trilions) + " տրիլիոն ";
+			Trilions = convertLessThanOneThousand(trilions) + " Տրիլիոն ";
 			break;
 		default:
-			Trilions = convertLessThanOneThousand(trilions) + " տրիլիոն ";
+			Trilions = convertLessThanOneThousand(trilions) + " Տրիլիոն ";
 		}
 		 result = Trilions;
 
@@ -128,10 +128,10 @@ private static final String[] tensNames = {
 			Billions = "";
 			break;
 		case 1:
-			Billions = convertLessThanOneThousand(billions) + " միլիարդ ";
+			Billions = convertLessThanOneThousand(billions) + " Միլիարդ ";
 			break;
 		default:
-			Billions = convertLessThanOneThousand(billions) + " միլիարդ ";
+			Billions = convertLessThanOneThousand(billions) + " Միլիարդ ";
 		}
 		result = result + Billions;
 
@@ -141,10 +141,10 @@ private static final String[] tensNames = {
 			Millions = "";
 			break;
 		case 1:
-			Millions = convertLessThanOneThousand(millions) + " միլիոն ";
+			Millions = convertLessThanOneThousand(millions) + " Միլիոն ";
 			break;
 		default:
-			Millions = convertLessThanOneThousand(millions) + " միլիոն ";
+			Millions = convertLessThanOneThousand(millions) + " Միլիոն ";
 		}
 		result = result + Millions;
 
@@ -154,10 +154,10 @@ private static final String[] tensNames = {
 			Thousands = "";
 			break;
 		case 1:
-			Thousands = " հազար ";
+			Thousands = " Հազար ";
 			break;
 		default:
-			Thousands = convertLessThanOneThousand(thousands) + " հազար ";
+			Thousands = convertLessThanOneThousand(thousands) + " Հազար ";
 		}
 		result = result + Thousands;
 
@@ -167,6 +167,6 @@ private static final String[] tensNames = {
 		
 		lumaResult = lumaValueInWords(given) ;
 	
-		return (result +" դրամ "+lumaResult +" լումա").replaceFirst(" ", "")+"\n" ;
+		return (result +" Դրամ "+lumaResult +" Լումա").replaceFirst(" ", "")+"\n" ;
 		}
 	}
