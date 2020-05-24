@@ -1,1 +1,5 @@
-If the Output is with '?' characters , please set the encoding to UTF-8
+1) My IDE is Eclipse,it accepts '.' for decimal , if you are using another IDE and it throws mismatch exception,
+	please try ',' for partition.
+2) If the Output is with '?' characters , please set the encoding to UTF-8.
+3) My Java version is 1.8.0_231.
+4) At some point it round the decimal part

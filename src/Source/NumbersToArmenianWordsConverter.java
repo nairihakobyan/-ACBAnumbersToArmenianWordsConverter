@@ -1,4 +1,6 @@
 package Source;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.text.DecimalFormat; 
 
 public class NumbersToArmenianWordsConverter{
@@ -11,7 +13,7 @@ private static final String[] tensNames = {
 			" ինը", " տաս", " տասնմեկ", " տասներկու", " տասներեք", " տասնչորս", " տասնհինգ", " տասնվեց", " տասնյոթ",
 			" տասնութ", " տասնինը" };
 	
-	private static String lumaResult;
+	private static String lumaResult = "զրո ";
 	
 	private NumbersToArmenianWordsConverter() {
 	}
@@ -37,28 +39,42 @@ private static final String[] tensNames = {
 	
 	private static String lumaValueInWords(Double given) {
  		 String words="";
- 		 long value = new Double(given).longValue(); 
- 		 //float cast is to not let the number be rounded
- 		 int number = (int) ( 
- 				 			( 
- 						 (float)(given-value)
- 				 			)
- 				 *100);
  		
- 		 if (number == 0){
+ 		String some=  BigDecimal.valueOf(given).setScale(2, RoundingMode.DOWN).toString() ;
+ 		
+ 		char [] array = new char[some.length()] ;
+ 		
+ 		int tmp2 = 0;
+ 		int tmp3 = 0;
+ 		
+ 		for(int i = 0;i < some.length();i++ ) {
+ 			array[i] = some.charAt(i);
+ 			if(array[i] == '.') {
+ 				   tmp2 = i+1;
+ 				   tmp3 = i+2;
+ 				   }
+ 			}
+ 		
+		int index = array[tmp2]-48;
+		int index2 = 0;
+		if(array[given.toString().indexOf(".")+1] != array.length-1)
+			index2 = array[tmp3]-48;
+	
+		
+ 		 if (index == 0 && index2 == 0){
 			return  "զրո";
- 		 	}
- 		 while (number > 0) {
- 			 if (number % 100 < 20) {
- 				 words += numNames[number % 100];
- 				 number = 0;
- 				 }
- 			 else {	
- 				 words = tensNames[number / 10] + words;
- 				 number %= 10;
+		 	}
+		 while (index > 0 || index2 > 0) {
+			 if (index % 10 < 20) {
+				 words = tensNames[index % 10];
+				 index = 0;
+				 }
+			 if(index2 > 0){  
+				 words += numNames[index2] ;
+				 index2 = 0;
  			 	 }
- 			 }
- 		 return numNames[number] +  words ;
+		 }
+ 		 return  words ;
 	 }
 
 	public static String convert(Double given)  {
