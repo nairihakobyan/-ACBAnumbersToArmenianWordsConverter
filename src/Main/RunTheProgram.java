@@ -7,11 +7,10 @@ public class RunTheProgram{
 public static void main(String[] args)   {
 		
 	
-		Scanner scan = new Scanner(System.in);	
-		//because of the loop it accepts two enters
+		@SuppressWarnings("resource")
+		Scanner scan = new Scanner(System.in);	 
 		for(int i = 0;i < 100;i++) {
-			System.out.println("Please input numbers between 0 and 1 quadrillion(not including)"+"\n"
-					+ "hit Enter twice" );
+			System.out.println("Please input numbers between 0 and 1 quadrillion(not including)"+"\n");
 			double number = scan.nextDouble();
 			
 			if(number < 1000000000000000l && number > 0)  {
@@ -22,6 +21,7 @@ public static void main(String[] args)   {
 				throw new InputMismatchException();
 			}
 		}
+		scan.close();
 		
 	}
 }

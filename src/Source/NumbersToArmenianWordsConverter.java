@@ -49,7 +49,7 @@ private static final String[] tensNames = {
  		
  		for(int i = 0;i < some.length();i++ ) {
  			array[i] = some.charAt(i);
- 			if(array[i] == '.') {
+ 			if(array[i] == '.' || array[i] == ',') {
  				   tmp2 = i+1;
  				   tmp3 = i+2;
  				   }
@@ -79,6 +79,7 @@ private static final String[] tensNames = {
 
 	public static String convert(Double given)  {
 		String result;
+		
 		long value =  new Double(given).longValue();
 		// 0 to 999 999 999 999 999
 		if ( value == 0 && given == 0) {
