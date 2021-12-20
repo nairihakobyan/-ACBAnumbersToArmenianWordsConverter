@@ -6,7 +6,7 @@ stages:
 
 build for prod:
   tags:
-    - gr1001
+    - $RUNNER
   stage: build
   only:
     -  master
