@@ -15,9 +15,5 @@ build for prod:
       - "*.conf"
       #- "*.yml" 
   script:
-    - echo "start building"
-    - npm config set strict-ssl false
-    - npm i 
-    - npm run build --prod
-    - echo "build stage is finished"       
+    - echo "start building"   
 
