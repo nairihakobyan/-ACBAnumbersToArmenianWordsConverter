@@ -1,0 +1,8 @@
+stages:
+ - test
+ 
+ some:
+   stage: test
+   script:
+      - echo "start building"
+   
