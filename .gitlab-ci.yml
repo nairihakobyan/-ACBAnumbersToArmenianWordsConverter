@@ -1,9 +1,23 @@
 stages:
- - test
- - build
- 
- some:
-   stage: test
-   script:
-      - echo "start building"
-   
+  - build
+  - prepare
+  - deploy
+
+
+build for prod:
+  tags:
+    - gr1001
+  stage: build
+  only:
+    -  master
+  except:
+    changes:
+      - "*.conf"
+      #- "*.yml" 
+  script:
+    - echo "start building"
+    - npm config set strict-ssl false
+    - npm i 
+    - npm run build --prod
+    - echo "build stage is finished"       
+
